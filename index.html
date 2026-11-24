@@ -11,13 +11,29 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Personal portfolio website of Ralph Anthony A. Diaz, a Grade 11 TVL-ICT student and aspiring web developer from Lapu-Lapu City, Cebu." />
 		<link rel="preload" as="image" href="banner1.jpg" fetchpriority="high" />
-		<link rel="preload" href="assets/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-		<noscript><link rel="stylesheet" href="assets/css/main.css" /></noscript>
-		<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+		<link rel="stylesheet" href="assets/css/main.css" />
 		<style>
 			/* =========================================
-			   BLUE THEME, CONTRAST & HOVER OVERRIDES
+			   PERFORMANCE, BLUE THEME & HOVER OVERRIDES
 			   ========================================= */
+
+			/* Skip rendering off-screen sections until scrolled (Boosts Mobile LCP) */
+			#two, #three, #four, #footer {
+				content-visibility: auto;
+				contain-intrinsic-size: 600px;
+			}
+
+			/* Ensure banner renders immediately with zero layout shift */
+			#one .image.main {
+				background-image: none !important;
+				min-height: 180px;
+			}
+
+			#one .image.main img {
+				display: block !important;
+				width: 100%;
+				height: auto;
+			}
 
 			/* Soft Ice-Blue Page Background */
 			body, #wrapper {
@@ -234,7 +250,7 @@
 		<!-- Header -->
 			<section id="header">
 				<header>
-					<span class="image avatar"><img src="profile.jpg" alt="Profile photo of Ralph Anthony A. Diaz" width="128" height="128" loading="lazy" /></span>
+					<span class="image avatar"><img src="profile.jpg" alt="Profile photo of Ralph Anthony A. Diaz" width="128" height="128" loading="lazy" decoding="async" /></span>
 					<h1 id="logo"><a href="#one">Ralph Anthony A. Diaz</a></h1>
 					<p>Grade 11 – Jasper/Onyx | TVL-ICT<br />
 					Aspiring Web Developer</p>
@@ -264,7 +280,7 @@
 						<!-- One -->
 							<section id="one">
 								<div class="image main" data-position="center">
-									<img src="banner1.jpg" alt="Portfolio decorative header banner" width="1200" height="400" fetchpriority="high" />
+									<img src="banner1.jpg" alt="Portfolio decorative header banner" width="1200" height="400" fetchpriority="high" decoding="sync" />
 								</div>
 								<div class="container">
 									<header class="major">
@@ -402,30 +418,45 @@
 			<script defer src="assets/js/util.js"></script>
 			<script defer src="assets/js/main.js"></script>
 
-		<!-- EmailJS Contact Form Script -->
+		<!-- On-Demand EmailJS Loader & Contact Form Script -->
 			<script>
-				window.addEventListener("DOMContentLoaded", () => {
-					if (window.emailjs) {
-						emailjs.init({ publicKey: "Hw1dsddHp0OKp_m86" });
-					}
-				});
+				let emailjsLoaded = false;
 
-				const sendEmail = (e) => {
+				const loadEmailJS = () => {
+					if (emailjsLoaded) return Promise.resolve();
+					return new Promise((resolve, reject) => {
+						const script = document.createElement("script");
+						script.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js";
+						script.onload = () => {
+							emailjs.init({ publicKey: "Hw1dsddHp0OKp_m86" });
+							emailjsLoaded = true;
+							resolve();
+						};
+						script.onerror = reject;
+						document.head.appendChild(script);
+					});
+				};
+
+				// Preload EmailJS only when user interacts with the form
+				document.getElementById("f").addEventListener("focusin", loadEmailJS, { once: true });
+
+				const sendEmail = async (e) => {
 					e.preventDefault();
 					const form = document.getElementById("f");
 					const timeInput = document.getElementById("t");
 					const statusMsg = document.getElementById("s");
 
+					statusMsg.innerHTML = "<span style='color: #14537d; font-weight: bold;'>Sending...</span>";
 					timeInput.value = new Date().toLocaleString();
 
-					emailjs.sendForm("service_zpzp7km", "template_hcepzrc", form)
-						.then(() => {
-							statusMsg.innerHTML = "<span style='color: #14537d; font-weight: bold;'>Successfully Sent!</span>";
-							form.reset();
-						})
-						.catch(() => {
-							statusMsg.innerHTML = "<span style='color: #b91c1c; font-weight: bold;'>Failed to send message!</span>";
-						});
+					try {
+						await loadEmailJS();
+						await emailjs.sendForm("service_zpzp7km", "template_hcepzrc", form);
+						statusMsg.innerHTML = "<span style='color: #14537d; font-weight: bold;'>Successfully Sent!</span>";
+						form.reset();
+					} catch {
+						statusMsg.innerHTML = "<span style='color: #b91c1c; font-weight: bold;'>Failed to send message!</span>";
+					}
 				};
 			</script>
 
