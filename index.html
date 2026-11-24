@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 		<style>
 			/* =========================================
 			   BLUE THEME & HOVER EFFECTS OVERRIDES
@@ -210,7 +211,7 @@
 		<!-- Header -->
 			<section id="header">
 				<header>
-					<span class="image avatar"><img src="images/avatar.jpg" alt="Ralph Anthony A. Diaz" /></span>
+					<span class="image avatar"><img src="profile.jpg" alt="Ralph Anthony A. Diaz" /></span>
 					<h1 id="logo"><a href="#">Ralph Anthony A. Diaz</a></h1>
 					<p>Grade 11 – Jasper/Onyx | TVL-ICT<br />
 					Aspiring Web Developer</p>
@@ -307,32 +308,41 @@
 							<section id="four">
 								<div class="container">
 									<h3>Get In Touch</h3>
-									<p>Thank you for visiting my personal profile website! Fill out the form below if you'd like to connect or send a message.</p>
-									<form method="post" action="#">
+									<p>Please fill out the form below to contact me:</p>
+									<form id="f" onsubmit="sendEmail(event)">
 										<div class="row gtr-uniform">
-											<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-											<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email Address" /></div>
-											<div class="col-12">
-												<select name="strand" id="strand">
-													<option value="">- Select Class Strand -</option>
-													<option value="ICT">ICT</option>
-													<option value="HUMSS">HUMSS</option>
-													<option value="STEM">STEM</option>
-													<option value="ABM">ABM</option>
-													<option value="GAS">GAS</option>
-													<option value="Other">Other</option>
-												</select>
+											<div class="col-6 col-12-xsmall">
+												<input type="text" id="name" name="name" placeholder="Name" required />
 											</div>
 											<div class="col-6 col-12-xsmall">
-												<input type="radio" id="gender-male" name="gender" value="Male" checked>
+												<input type="email" id="email" name="email" placeholder="Email Address" required />
+											</div>
+											<div class="col-6 col-12-xsmall">
+												<input type="radio" id="gender-male" name="gender" value="Male">
 												<label for="gender-male">Male</label>
 											</div>
 											<div class="col-6 col-12-xsmall">
 												<input type="radio" id="gender-female" name="gender" value="Female">
 												<label for="gender-female">Female</label>
 											</div>
-											<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
 											<div class="col-12">
+												<select id="strand" name="class strand">
+													<option value="ICT">ICT</option>
+													<option value="ABM">ABM</option>
+													<option value="STEM">STEM</option>
+													<option value="HUMSS">HUMSS</option>
+													<option value="GAS">GAS</option>
+												</select>
+											</div>
+											<div class="col-12">
+												<textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
+											</div>
+
+											<input type="hidden" name="title" value="Contact Me Form">
+											<input type="hidden" id="t" name="time">
+
+											<div class="col-12">
+												<p id="s" style="margin-bottom: 0.75em;"></p>
 												<ul class="actions">
 													<li><input type="submit" class="primary" value="Send Message" /></li>
 													<li><input type="reset" value="Clear Form" /></li>
@@ -364,6 +374,29 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+		<!-- EmailJS Contact Form Script -->
+			<script>
+				emailjs.init({ publicKey: "Hw1dsddHp0OKp_m86" });
+
+				const sendEmail = (e) => {
+					e.preventDefault();
+					const form = document.getElementById("f");
+					const timeInput = document.getElementById("t");
+					const statusMsg = document.getElementById("s");
+
+					timeInput.value = new Date().toLocaleString();
+
+					emailjs.sendForm("service_zpzp7km", "template_hcepzrc", form)
+						.then(() => {
+							statusMsg.innerHTML = "<span style='color: #1c6ea4; font-weight: bold;'>Successfully Sent!</span>";
+							form.reset();
+						})
+						.catch(() => {
+							statusMsg.innerHTML = "<span style='color: #d9534f; font-weight: bold;'>Failed to send message!</span>";
+						});
+				};
+			</script>
 
 	</body>
 </html>
