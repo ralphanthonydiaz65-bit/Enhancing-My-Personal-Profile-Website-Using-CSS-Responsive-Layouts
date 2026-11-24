@@ -4,21 +4,24 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html lang="en">
 	<head>
 		<title>Ralph Anthony A. Diaz | Personal Portfolio</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Personal portfolio website of Ralph Anthony A. Diaz, a Grade 11 TVL-ICT student and aspiring web developer from Lapu-Lapu City, Cebu." />
+		<link rel="preload" as="image" href="banner1.jpg" fetchpriority="high" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 		<style>
 			/* =========================================
-			   BLUE THEME & HOVER EFFECTS OVERRIDES
+			   BLUE THEME, CONTRAST & HOVER OVERRIDES
 			   ========================================= */
 
 			/* Soft Ice-Blue Page Background */
 			body, #wrapper {
 				background-color: #e6f3fc;
+				color: #334155;
 			}
 
 			#main > section {
@@ -26,33 +29,33 @@
 				border-top: solid 4px #d0e7f7;
 			}
 
-			/* Headings & Links */
+			/* High-Contrast Headings & Links (WCAG AA+ Compliant) */
 			h1, h2, h3, h4, h5, h6,
 			header.major h2 {
-				color: #1c6ea4;
+				color: #14537d;
 			}
 
 			a {
-				color: #2185c5;
+				color: #145a8a;
 				transition: color 0.3s ease, border-color 0.3s ease;
 			}
 
 			a:hover {
-				color: #14537d !important;
+				color: #0d3b5c !important;
 			}
 
-			/* Sidebar Header (Ocean Blue Gradient) */
+			/* Sidebar Header (High-Contrast Ocean Blue Gradient) */
 			#header {
-				background: linear-gradient(180deg, #1b6ca8 0%, #2a8bd0 100%);
-				color: #e3f2fd;
+				background: linear-gradient(180deg, #134e7a 0%, #1b6ca8 100%);
+				color: #ffffff;
 			}
 
 			#header > header p {
-				color: #cce7fa;
+				color: #e2f1fc;
 			}
 
 			#header > header .image.avatar {
-				border: 3px solid rgba(255, 255, 255, 0.45);
+				border: 3px solid rgba(255, 255, 255, 0.55);
 				transition: transform 0.35s ease, box-shadow 0.35s ease;
 			}
 
@@ -63,30 +66,33 @@
 
 			/* Sidebar Navigation Hover & Active States */
 			#header > nav ul li a {
+				color: #ffffff !important;
 				transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
 			}
 
 			#header > nav ul li a:hover {
-				background-color: rgba(255, 255, 255, 0.14);
+				background-color: rgba(255, 255, 255, 0.16);
 				color: #ffffff !important;
 				padding-left: 1.85em;
 			}
 
 			#header > nav ul li a.active {
 				background: #f8fcff;
-				color: #1c6ea4 !important;
+				color: #134e7a !important;
 				font-weight: 700;
 			}
 
 			/* Sidebar Social Icons Hover */
 			#header > footer .icons li a {
+				color: #ffffff !important;
 				transition: transform 0.25s ease, color 0.25s ease;
 				display: inline-block;
+				padding: 0.35em;
 			}
 
 			#header > footer .icons li a:hover {
 				transform: translateY(-4px) scale(1.15);
-				color: #ffffff !important;
+				color: #bae0fc !important;
 			}
 
 			/* Personal Details List Hover */
@@ -110,7 +116,7 @@
 			}
 
 			ul.feature-icons li:before {
-				background: #2580c2;
+				background: #186296;
 				color: #ffffff;
 				transition: transform 0.3s ease, background-color 0.3s ease;
 			}
@@ -122,7 +128,7 @@
 			}
 
 			ul.feature-icons li:hover:before {
-				background: #175787;
+				background: #104366;
 				transform: scale(1.12) rotate(6deg);
 			}
 
@@ -139,17 +145,26 @@
 
 			.features article:hover {
 				transform: translateY(-5px);
-				border-color: #2b88cc;
+				border-color: #1b6ca8;
 				box-shadow: 0 10px 22px rgba(28, 110, 164, 0.14);
 			}
 
-			/* Form Inputs & Radio Buttons */
+			/* Form Labels, Inputs & Radio Buttons */
+			.sr-only-label {
+				display: block;
+				font-weight: 600;
+				color: #14537d;
+				margin-bottom: 0.35em;
+				font-size: 0.9em;
+			}
+
 			input[type="text"],
 			input[type="email"],
 			select,
 			textarea {
 				background-color: #ffffff;
-				border-color: #bddcf2;
+				border-color: #9ecae8;
+				color: #1e293b;
 				transition: border-color 0.25s ease, box-shadow 0.25s ease;
 			}
 
@@ -157,13 +172,13 @@
 			input[type="email"]:focus,
 			select:focus,
 			textarea:focus {
-				border-color: #2185c5 !important;
-				box-shadow: 0 0 0 3px rgba(33, 133, 197, 0.18) !important;
+				border-color: #186296 !important;
+				box-shadow: 0 0 0 3px rgba(24, 98, 150, 0.2) !important;
 			}
 
 			input[type="radio"]:checked + label:before {
-				background: #2185c5;
-				border-color: #2185c5;
+				background: #186296;
+				border-color: #186296;
 			}
 
 			/* Buttons Hover Effects */
@@ -178,15 +193,21 @@
 			input[type="submit"].primary,
 			button.primary,
 			.button.primary {
-				background-color: #2185c5;
+				background-color: #186296;
+				color: #ffffff !important;
 			}
 
 			input[type="submit"].primary:hover,
 			button.primary:hover,
 			.button.primary:hover {
-				background-color: #186596 !important;
+				background-color: #11476e !important;
 				transform: translateY(-2px);
-				box-shadow: 0 6px 14px rgba(24, 101, 150, 0.28);
+				box-shadow: 0 6px 14px rgba(17, 71, 110, 0.28);
+			}
+
+			input[type="reset"],
+			.button {
+				color: #1e293b !important;
 			}
 
 			input[type="reset"]:hover,
@@ -197,12 +218,13 @@
 
 			/* Footer */
 			#footer {
-				background-color: #186296;
-				color: #d9eeff;
+				background-color: #124870;
+				color: #ffffff;
 			}
 
 			#footer a {
 				color: #ffffff;
+				text-decoration: underline;
 			}
 		</style>
 	</head>
@@ -211,12 +233,12 @@
 		<!-- Header -->
 			<section id="header">
 				<header>
-					<span class="image avatar"><img src="profile.jpg" alt="Ralph Anthony A. Diaz" /></span>
-					<h1 id="logo"><a href="#">Ralph Anthony A. Diaz</a></h1>
+					<span class="image avatar"><img src="profile.jpg" alt="Profile photo of Ralph Anthony A. Diaz" width="128" height="128" /></span>
+					<h1 id="logo"><a href="#one">Ralph Anthony A. Diaz</a></h1>
 					<p>Grade 11 – Jasper/Onyx | TVL-ICT<br />
 					Aspiring Web Developer</p>
 				</header>
-				<nav id="nav">
+				<nav id="nav" aria-label="Primary Navigation">
 					<ul>
 						<li><a href="#one" class="active">About Me</a></li>
 						<li><a href="#two">Hobbies &amp; Interests</a></li>
@@ -226,8 +248,8 @@
 				</nav>
 				<footer>
 					<ul class="icons">
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook - Ralph Anthony Diaz</span></a></li>
-						<li><a href="#four" class="icon solid fa-envelope"><span class="label">Contact</span></a></li>
+						<li><a href="#four" aria-label="Facebook profile of Ralph Anthony Diaz" class="icon brands fa-facebook-f"><span class="label">Facebook - Ralph Anthony Diaz</span></a></li>
+						<li><a href="#four" aria-label="Jump to contact form" class="icon solid fa-envelope"><span class="label">Contact</span></a></li>
 					</ul>
 				</footer>
 			</section>
@@ -236,12 +258,12 @@
 			<div id="wrapper">
 
 				<!-- Main -->
-					<div id="main">
+					<main id="main">
 
 						<!-- One -->
 							<section id="one">
 								<div class="image main" data-position="center">
-									<img src="banner1.jpg" alt="" />
+									<img src="banner1.jpg" alt="Portfolio decorative header banner" width="1200" height="400" fetchpriority="high" />
 								</div>
 								<div class="container">
 									<header class="major">
@@ -312,9 +334,11 @@
 									<form id="f" onsubmit="sendEmail(event)">
 										<div class="row gtr-uniform">
 											<div class="col-6 col-12-xsmall">
+												<label for="name" class="sr-only-label">Name</label>
 												<input type="text" id="name" name="name" placeholder="Name" required />
 											</div>
 											<div class="col-6 col-12-xsmall">
+												<label for="email" class="sr-only-label">Email Address</label>
 												<input type="email" id="email" name="email" placeholder="Email Address" required />
 											</div>
 											<div class="col-6 col-12-xsmall">
@@ -326,6 +350,7 @@
 												<label for="gender-female">Female</label>
 											</div>
 											<div class="col-12">
+												<label for="strand" class="sr-only-label">Class Strand</label>
 												<select id="strand" name="class strand">
 													<option value="ICT">ICT</option>
 													<option value="ABM">ABM</option>
@@ -335,6 +360,7 @@
 												</select>
 											</div>
 											<div class="col-12">
+												<label for="message" class="sr-only-label">Message</label>
 												<textarea id="message" name="message" rows="5" placeholder="Message" required></textarea>
 											</div>
 
@@ -342,7 +368,7 @@
 											<input type="hidden" id="t" name="time">
 
 											<div class="col-12">
-												<p id="s" style="margin-bottom: 0.75em;"></p>
+												<p id="s" role="status" aria-live="polite" style="margin-bottom: 0.75em;"></p>
 												<ul class="actions">
 													<li><input type="submit" class="primary" value="Send Message" /></li>
 													<li><input type="reset" value="Clear Form" /></li>
@@ -353,31 +379,35 @@
 								</div>
 							</section>
 
-					</div>
+					</main>
 
 				<!-- Footer -->
-					<section id="footer">
+					<footer id="footer">
 						<div class="container">
 							<ul class="copyright">
 								<li>&copy; Ralph Anthony A. Diaz. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 							</ul>
 						</div>
-					</section>
+					</footer>
 
 			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<!-- Scripts (Deferred so they don't block mobile page rendering) -->
+			<script defer src="assets/js/jquery.min.js"></script>
+			<script defer src="assets/js/jquery.scrollex.min.js"></script>
+			<script defer src="assets/js/jquery.scrolly.min.js"></script>
+			<script defer src="assets/js/browser.min.js"></script>
+			<script defer src="assets/js/breakpoints.min.js"></script>
+			<script defer src="assets/js/util.js"></script>
+			<script defer src="assets/js/main.js"></script>
 
 		<!-- EmailJS Contact Form Script -->
 			<script>
-				emailjs.init({ publicKey: "Hw1dsddHp0OKp_m86" });
+				window.addEventListener("DOMContentLoaded", () => {
+					if (window.emailjs) {
+						emailjs.init({ publicKey: "Hw1dsddHp0OKp_m86" });
+					}
+				});
 
 				const sendEmail = (e) => {
 					e.preventDefault();
@@ -389,11 +419,11 @@
 
 					emailjs.sendForm("service_zpzp7km", "template_hcepzrc", form)
 						.then(() => {
-							statusMsg.innerHTML = "<span style='color: #1c6ea4; font-weight: bold;'>Successfully Sent!</span>";
+							statusMsg.innerHTML = "<span style='color: #14537d; font-weight: bold;'>Successfully Sent!</span>";
 							form.reset();
 						})
 						.catch(() => {
-							statusMsg.innerHTML = "<span style='color: #d9534f; font-weight: bold;'>Failed to send message!</span>";
+							statusMsg.innerHTML = "<span style='color: #b91c1c; font-weight: bold;'>Failed to send message!</span>";
 						});
 				};
 			</script>
