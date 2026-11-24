@@ -10,6 +10,200 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			/* =========================================
+			   BLUE THEME & HOVER EFFECTS OVERRIDES
+			   ========================================= */
+
+			/* Soft Ice-Blue Page Background */
+			body, #wrapper {
+				background-color: #e6f3fc;
+			}
+
+			#main > section {
+				background-color: #f8fcff;
+				border-top: solid 4px #d0e7f7;
+			}
+
+			/* Headings & Links */
+			h1, h2, h3, h4, h5, h6,
+			header.major h2 {
+				color: #1c6ea4;
+			}
+
+			a {
+				color: #2185c5;
+				transition: color 0.3s ease, border-color 0.3s ease;
+			}
+
+			a:hover {
+				color: #14537d !important;
+			}
+
+			/* Sidebar Header (Ocean Blue Gradient) */
+			#header {
+				background: linear-gradient(180deg, #1b6ca8 0%, #2a8bd0 100%);
+				color: #e3f2fd;
+			}
+
+			#header > header p {
+				color: #cce7fa;
+			}
+
+			#header > header .image.avatar {
+				border: 3px solid rgba(255, 255, 255, 0.45);
+				transition: transform 0.35s ease, box-shadow 0.35s ease;
+			}
+
+			#header > header .image.avatar:hover {
+				transform: scale(1.06);
+				box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+			}
+
+			/* Sidebar Navigation Hover & Active States */
+			#header > nav ul li a {
+				transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+			}
+
+			#header > nav ul li a:hover {
+				background-color: rgba(255, 255, 255, 0.14);
+				color: #ffffff !important;
+				padding-left: 1.85em;
+			}
+
+			#header > nav ul li a.active {
+				background: #f8fcff;
+				color: #1c6ea4 !important;
+				font-weight: 700;
+			}
+
+			/* Sidebar Social Icons Hover */
+			#header > footer .icons li a {
+				transition: transform 0.25s ease, color 0.25s ease;
+				display: inline-block;
+			}
+
+			#header > footer .icons li a:hover {
+				transform: translateY(-4px) scale(1.15);
+				color: #ffffff !important;
+			}
+
+			/* Personal Details List Hover */
+			ul.alt li {
+				border-top-color: #cbe3f5;
+				padding: 0.75em 0.85em;
+				border-radius: 6px;
+				transition: background-color 0.25s ease, transform 0.25s ease;
+			}
+
+			ul.alt li:hover {
+				background-color: #eaf5fd;
+				transform: translateX(6px);
+			}
+
+			/* Hobby Icons & Cards Hover */
+			ul.feature-icons li {
+				padding: 0.65em 0.65em 0.65em 3.25em;
+				border-radius: 8px;
+				transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+			}
+
+			ul.feature-icons li:before {
+				background: #2580c2;
+				color: #ffffff;
+				transition: transform 0.3s ease, background-color 0.3s ease;
+			}
+
+			ul.feature-icons li:hover {
+				background-color: #eaf5fd;
+				transform: translateY(-3px);
+				box-shadow: 0 4px 12px rgba(28, 110, 164, 0.12);
+			}
+
+			ul.feature-icons li:hover:before {
+				background: #175787;
+				transform: scale(1.12) rotate(6deg);
+			}
+
+			/* Goals & Favorites Article Cards */
+			.features article {
+				border-top-color: #cbe3f5;
+				padding: 1.5em;
+				margin-bottom: 1.25em;
+				background: #ffffff;
+				border: 1px solid #d4e8f7;
+				border-radius: 10px;
+				transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+			}
+
+			.features article:hover {
+				transform: translateY(-5px);
+				border-color: #2b88cc;
+				box-shadow: 0 10px 22px rgba(28, 110, 164, 0.14);
+			}
+
+			/* Form Inputs & Radio Buttons */
+			input[type="text"],
+			input[type="email"],
+			select,
+			textarea {
+				background-color: #ffffff;
+				border-color: #bddcf2;
+				transition: border-color 0.25s ease, box-shadow 0.25s ease;
+			}
+
+			input[type="text"]:focus,
+			input[type="email"]:focus,
+			select:focus,
+			textarea:focus {
+				border-color: #2185c5 !important;
+				box-shadow: 0 0 0 3px rgba(33, 133, 197, 0.18) !important;
+			}
+
+			input[type="radio"]:checked + label:before {
+				background: #2185c5;
+				border-color: #2185c5;
+			}
+
+			/* Buttons Hover Effects */
+			input[type="submit"],
+			input[type="reset"],
+			button,
+			.button {
+				border-radius: 6px;
+				transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+			}
+
+			input[type="submit"].primary,
+			button.primary,
+			.button.primary {
+				background-color: #2185c5;
+			}
+
+			input[type="submit"].primary:hover,
+			button.primary:hover,
+			.button.primary:hover {
+				background-color: #186596 !important;
+				transform: translateY(-2px);
+				box-shadow: 0 6px 14px rgba(24, 101, 150, 0.28);
+			}
+
+			input[type="reset"]:hover,
+			.button:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+			}
+
+			/* Footer */
+			#footer {
+				background-color: #186296;
+				color: #d9eeff;
+			}
+
+			#footer a {
+				color: #ffffff;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -87,22 +281,19 @@
 									<p>Everything I'm working toward as a student and a few personal favorites that keep me going.</p>
 									<div class="features">
 										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<div class="inner">
+											<div class="inner" style="width: 100%;">
 												<h4>Educational Goals</h4>
 												<p>Maintain good grades and master every subject throughout the school year, build practical job-ready skills, and grow daily in discipline, confidence, and responsibility.</p>
 											</div>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<div class="inner">
+											<div class="inner" style="width: 100%;">
 												<h4>Countdown to Success</h4>
 												<p>Graduate from senior high school with good grades, proceed to college, and build a successful career in web development that matches my skills and interests.</p>
 											</div>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-											<div class="inner">
+											<div class="inner" style="width: 100%;">
 												<h4>Personal Favorites</h4>
 												<p><strong>Top 5 Foods:</strong> Fried Chicken, Lumpia, Menudo, Adobo, and Spaghetti.<br />
 												<strong>Other Favorites:</strong> The color blue (calming &amp; refreshing), Coke for stress relief, and the formula <em>E = mc<sup>2</sup></em>.</p>
